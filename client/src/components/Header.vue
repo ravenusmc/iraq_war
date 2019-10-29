@@ -1,7 +1,8 @@
 <template>
 
   <div>
-    <h1>HEader</h1>
+    <header>
+    </header>
   </div>
 
 </template>
