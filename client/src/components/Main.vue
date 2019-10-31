@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1>Main</h1>
+    <main>
+      <h1>Main</h1>
+    </main>
   </div>
 </template>
 
@@ -11,4 +13,8 @@ export default {
 </script>
 
 <style scoped>
+main {
+  border: 2px solid black;
+}
+
 </style>
