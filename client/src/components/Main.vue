@@ -1,14 +1,19 @@
 <template>
   <div>
     <main>
-      <h1></h1>
+      <SectionOne/>
     </main>
   </div>
 </template>
 
 <script>
+import SectionOne from '@/components/SectionOne.vue';
+
 export default {
   name: 'Main',
+  components: {
+    SectionOne,
+  },
 };
 </script>
 
