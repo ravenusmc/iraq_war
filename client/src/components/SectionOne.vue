@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <div>
+      <div class="picParagraph">
       </div>
       <div class='paragraphDiv'>
         <h1>About this Project</h1>
@@ -24,7 +24,33 @@ export default {
 </script>
 
 <style scoped>
-.paragraphDiv {
-  border: 2px solid black;
+
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 3%;
+  margin-right: 3%;
 }
-<style>
+
+.picParagraph {
+  background-image: url('../assets/img/convoy.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+/* Media Query area */
+@media only all and (max-width: 900px){
+
+  section {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+</style>
