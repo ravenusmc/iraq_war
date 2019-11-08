@@ -1,14 +1,12 @@
 <template>
   <div>
     <form @submit="submitYears">
-      <h5>Select the Date by Year:</h5>
-      <label>Year One:</label>
-       <input type="number" v-model='yearOne' name="yearOne" placeholder="Enter First Year">&nbsp;
-       <label>Year Two:</label>
-       <input type="number" v-model="yearTwo" name="yearTwo" placeholder="Enter Second Year">
-       <v-btn type="submit" color='yellow red--text'>
-         Submit
-       </v-btn>
+      <h5>Select the Date:</h5>
+        <md-datepicker v-model="firstDate" md-immediately />
+        <md-datepicker v-model="lastDate" md-immediately />
+         <v-btn type="submit" color='yellow red--text'>
+           Submit
+         </v-btn>
     </form>
   </div>
 </template>
@@ -22,4 +20,7 @@ export default {
 </script>
 
 <style scoped>
+form {
+  margin-bottom: 100px;
+}
 </style>
