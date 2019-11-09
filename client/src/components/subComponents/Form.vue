@@ -7,15 +7,13 @@
           <input :value="startDate" :min="lastDay">
           <label>End Date</label>
           <input :value="endDate">
-          <!-- <input type="date" :value="selectedDate.start" :min="firstDay"
-          :max="lastDay" @input="setCustomStartDate">
-          <label>End Date</label>
-          <md-input type="date" :value="selectedDate.end" :max="lastDay"
-          @input="setCustomEndDate"></md-input> -->
-        <!-- <md-datepicker v-model="firstDate" md-immediately />
-        <md-datepicker v-model="lastDate" md-immediately /> -->
-        <button>Submit</button>
       </div>
+          <h5>Select the Event Type:</h5>
+          <select v-model="type" name="type">
+            <option v-for="type in typeOfEvents" v-bind:key="type" :value="type">{{ type }}</option>
+          </select>
+        <button>Submit</button>
+
     </form>
   </div>
 </template>
@@ -29,6 +27,11 @@ export default {
     return {
       startDate: '01/01/2004',
       endDate: '01/01/2009',
+      type: 'Non-Combat Event',
+      typeOfEvents: ['Non-Combat Event', 'Criminal Event', 'Friendly Action',
+        'Explosive Hazard', 'Enemy Action', 'Other', 'Suspicious Incident',
+        'Threat Report', 'Friendly Fire', 'criminal event', 'CRIMINAL EVENT',
+        'EXPLOSIVE HAZARD'],
     };
   },
   computed: {
@@ -41,8 +44,6 @@ export default {
       evt.preventDefault();
       this.startDate = moment(this.startDate).format('M/D/YYYY h:mm:ss A');
       this.endDate = moment(this.endDate).format('M/D/YYYY h:mm:ss A');
-      console.log(this.startDate);
-      console.log(this.endDate);
       // const queryData = {
       //   firstDate: this.firstDate,
       //   lastDate: this.lastDate,
@@ -65,7 +66,6 @@ form {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
   margin-left: 3%;
   margin-right: 3%;
 }
