@@ -1,18 +1,33 @@
 <template>
   <div>
     <form @submit="submitSelection">
-      <h5>Select the Date:</h5>
+
       <div class='datePicker'>
+          <h5>Select the Date:</h5>
           <label>Start Date</label>
           <input :value="startDate" :min="lastDay">
           <label>End Date</label>
           <input :value="endDate">
       </div>
+      <div>
           <h5>Select the Event Type:</h5>
           <select v-model="type" name="type">
             <option v-for="type in typeOfEvents" v-bind:key="type" :value="type">{{ type }}</option>
           </select>
+      </div>
+
+      <div>
+          <h5>Select the Event Type:</h5>
+          <select v-model="attackType" name="attackType">
+            <option v-for="attackType in attackTypes" v-bind:key="attackType" :value="attackType">
+              {{ attackType }}
+            </option>
+          </select>
+      </div>
+
+      <div>
         <button>Submit</button>
+      </div>
 
     </form>
   </div>
@@ -32,6 +47,9 @@ export default {
         'Explosive Hazard', 'Enemy Action', 'Other', 'Suspicious Incident',
         'Threat Report', 'Friendly Fire', 'criminal event', 'CRIMINAL EVENT',
         'EXPLOSIVE HAZARD'],
+      attackType: 'ENEMY',
+      attackTypes: ['ENEMY', 'NEUTRAL', 'FRIEND'],
+
     };
   },
   computed: {
@@ -58,12 +76,14 @@ export default {
 
 <style scoped>
 form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 100px;
 }
 
 .datePicker {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-left: 3%;

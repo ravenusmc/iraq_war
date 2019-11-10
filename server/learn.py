@@ -14,7 +14,7 @@ class Learn():
         print(self.data.head())
 
     def showUniqueElements(self):
-        print(self.data['Category'].unique())
+        print(self.data['Attack on'].unique())
 
 learn = Learn()
 learn.showUniqueElements()

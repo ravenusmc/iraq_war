@@ -3,9 +3,9 @@
 
 Okay, I've done other projects on wars but never done anything on the Iraq War. I
 also served in the war so why not do a project on it? I got the dataset, as usual,
-from Kaggle at this link: https://www.kaggle.com/simonrogers/iraq-deaths-20042009/download
+from Kaggle at this link: https://www.kaggle.com/simonrogers/iraq-deaths-20042009/
 The goal of this project, like the Vietnam project, is to examine Iraq War
-deaths. 
+deaths.
 
 
 # Getting started
