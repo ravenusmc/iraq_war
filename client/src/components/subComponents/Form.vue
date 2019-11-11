@@ -5,7 +5,7 @@
       <div class='datePicker'>
           <h5>Select the Date:</h5>
           <label>Start Date</label>
-          <input :value="startDate" :min="lastDay">
+          <input :value="startDate">
           <label>End Date</label>
           <input :value="endDate">
       </div>
@@ -35,6 +35,7 @@
 
 <script>
 import moment from 'moment';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Form',
@@ -58,17 +59,20 @@ export default {
     },
   },
   methods: {
+    ...mapActions([
+      'getFormData',
+    ]),
     submitSelection(evt) {
       evt.preventDefault();
       this.startDate = moment(this.startDate).format('M/D/YYYY h:mm:ss A');
       this.endDate = moment(this.endDate).format('M/D/YYYY h:mm:ss A');
-      // const queryData = {
-      //   firstDate: this.firstDate,
-      //   lastDate: this.lastDate,
-      //   shift: this.shift,
-      //   offense: this.offense,
-      // };
-      // eventBus.$emit('dataSubmitted', queryData);
+      const payload = {
+        startDate: this.startDate,
+        endDate: this.endDate,
+        type: this.type,
+        attackType: this.attackType,
+      };
+      this.getFormData({ payload });
     },
   },
 };

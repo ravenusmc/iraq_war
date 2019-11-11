@@ -5,11 +5,32 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    formData: {},
   },
-  mutations: {
+
+  getters: {
+    formData: state => state.formData,
   },
+
   actions: {
+
+    // This action will get the initial data and then build a graph based on that data
+    getFormData: ({ commit }, { payload }) => {
+      console.log('hi');
+      console.log({ payload });
+      commit('setFormData', payload);
+    },
+
+    // fetchGraphData: ({})
+
   },
-  modules: {
+
+  mutations: {
+
+    setFormData(state, data) {
+      state.formData = data;
+    },
+
   },
+
 });
