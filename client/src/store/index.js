@@ -23,6 +23,7 @@ export default new Vuex.Store({
       commit('setFormData', payload);
     },
 
+    // This action will get the coalition death data
     fetchCoalitionDeathData: ({ commit }, { payload }) => {
       const path = 'http://localhost:5000/CoalitionDeathData';
       axios.post(path, payload)

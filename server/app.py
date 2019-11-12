@@ -19,9 +19,11 @@ CORS(app)
 @app.route('/CoalitionDeathData', methods=['GET', 'POST'])
 def CoalitionDeathData():
     if request.method == 'POST':
-        #data = Data()
+        data = Data()
         post_data = request.get_json()
-        print(post_data)
+        first_date = post_data['startDate']
+        last_date = post_data['endDate']
+        data.coalitionDeathsByDate(first_date, last_date)
         return jsonify('hi')
 
 if __name__ == '__main__':

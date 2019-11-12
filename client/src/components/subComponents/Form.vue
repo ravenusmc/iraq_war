@@ -5,9 +5,9 @@
       <div class='datePicker'>
           <h5>Select the Date:</h5>
           <label>Start Date</label>
-          <input :value="startDate">
+          <input v-model="startDate">
           <label>End Date</label>
-          <input :value="endDate">
+          <input  v-model="endDate">
       </div>
       <div>
           <h5>Select the Event Type:</h5>
