@@ -9,16 +9,19 @@ class Data():
 
     def __init__(self):
         self.data = pd.read_csv('./data/Deaths_only.csv')
+        self.data['Date and time'] = pd.to_datetime(self.data['Date and time'], infer_datetime_format=True)
 
     def coalitionDeathsByDate(self, first_date, last_date):
-        #converting Date adn time column from an object to a datetime column
-        self.data['Date and time'] = pd.to_datetime(self.data['Date and time'], infer_datetime_format=True)
-        #Converting what the user entered to proper format
+        #Converting what the user entered to proper datetime format
         first_time_stamp = pd.to_datetime(first_date)
         last_time_stamp = pd.to_datetime(last_date)
-        print(last_time_stamp)
+        self.data['Month'] = self.data['Date and time'].dt.month
         self.data = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
-        print(self.data)
+        #print(self.data)
+        #I need to get the min value for the month column
+        min_month = self.data.Month.min()
+        #I need to get the max value for the month column
+        max_month = self.data.Month.max()
 
 # test = Data()
 # test.
