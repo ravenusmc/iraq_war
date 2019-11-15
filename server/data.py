@@ -25,6 +25,23 @@ class Data():
         self.data['Year'] = self.data['Date and time'].dt.year
         self.data = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
 
+        last_month = 12
+        while start_year <= end_year:
+            data = self.data
+            data =  data.loc[(data['Year'] == start_year)]
+            print(start_year)
+            if start_year == end_year:
+                last_month = end_month
+            while start_month <= last_month:
+                print(start_month)
+                month_data = data
+                month_data =  month_data.loc[(month_data['Month'] == start_month)]
+                monthly_deaths = month_data['Coalition forces killed'].sum()
+                print(monthly_deaths)
+                input()
+                start_month += 1
+            start_month = 1
+            start_year += 1
         #Getting min year
         # min_year = self.data.Year.min()
         # #Getting Max year
