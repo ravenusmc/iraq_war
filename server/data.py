@@ -25,47 +25,28 @@ class Data():
         self.data['Year'] = self.data['Date and time'].dt.year
         self.data = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
 
+        coalitionDeathData = []
+        columns = ['TimeFrame', 'Deaths']
+        coalitionDeathData.append(columns)
+
         last_month = 12
         while start_year <= end_year:
             data = self.data
             data =  data.loc[(data['Year'] == start_year)]
-            print(start_year)
             if start_year == end_year:
                 last_month = end_month
             while start_month <= last_month:
-                print(start_month)
+                rows = []
                 month_data = data
                 month_data =  month_data.loc[(month_data['Month'] == start_month)]
                 monthly_deaths = month_data['Coalition forces killed'].sum()
-                print(monthly_deaths)
-                input()
+                rows.append(int(start_month))
+                rows.append(int(monthly_deaths))
+                coalitionDeathData.append(rows)
                 start_month += 1
             start_month = 1
             start_year += 1
-        #Getting min year
-        # min_year = self.data.Year.min()
-        # #Getting Max year
-        # max_year = self.data.Year.max()
-        # number_of_years = max_year - min_year
-        # #I need to get the min value for the month column
-        # min_month = self.data.Month.min()
-        # #I need to get the max value for the month column
-        # max_month = self.data.Month.max()
-
-        #while guess != name and pos < len(name):
-        #These loops will get the deaths by the year and then by the month
-        # while min_year <= max_year:
-        #     data = self.data
-        #     data =  data.loc[(data['Year'] == min_year)]
-        #     while min_month <= max_month:
-        #         month_data = data
-        #         month_data =  month_data.loc[(month_data['Month'] == min_month)]
-        #         monthly_deaths = month_data['Coalition forces killed'].sum()
-        #         min_month += 1
-        #     if number_of_years > 0:
-        #
-        #     min_year += 1
+        print(coalitionDeathData)
 
 
 # test = Data()
-# test.
