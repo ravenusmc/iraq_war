@@ -46,7 +46,7 @@ class Data():
                 start_month += 1
             start_month = 1
             start_year += 1
-        print(coalitionDeathData)
+        return coalitionDeathData
 
 
 # test = Data()
