@@ -4,6 +4,7 @@
 #importing supporting libraries
 import numpy as np
 import pandas as pd
+import datetime
 
 class Data():
 
@@ -37,10 +38,13 @@ class Data():
                 last_month = end_month
             while start_month <= last_month:
                 rows = []
+                date_list = []
                 month_data = data
                 month_data =  month_data.loc[(month_data['Month'] == start_month)]
                 monthly_deaths = month_data['Coalition forces killed'].sum()
-                rows.append(int(start_month))
+                date_list.append(start_year)
+                date = datetime.datetime(start_year, start_month, 1)
+                rows.append(date)
                 rows.append(int(monthly_deaths))
                 coalitionDeathData.append(rows)
                 start_month += 1

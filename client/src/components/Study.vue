@@ -26,8 +26,8 @@ export default {
       typeOne: 'LineChart',
       chartOptionsOne: {
         title: 'Coalition Deaths',
-        legend: { position: 'bottom' },
-        // 'height': 300,
+        legend: { position: 'top' },
+        height: 600,
         vAxis: {
           viewWindow: {
             min: 0,
