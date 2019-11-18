@@ -72,6 +72,7 @@ export default {
         type: this.type,
         attackType: this.attackType,
       };
+      console.log(payload);
       this.getFormData({ payload });
     },
   },

@@ -18,6 +18,12 @@ export default new Vuex.Store({
 
   actions: {
 
+    // This action will build the graphs.
+    buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
+      dispatch('fetchCoalitionDeathData', { payload });
+      commit('setFormData', payload);
+    },
+
     // This action will get the initial data and then build a graph based on that data
     getFormData: ({ commit, dispatch }, { payload }) => {
       dispatch('fetchCoalitionDeathData', { payload });
