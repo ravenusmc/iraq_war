@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Form/>
+    <hr/>
+    <h1>STUDY AREA ONE</h1>
+    <SimpleForm/>
     <GraphCard
      :typeOne='typeOne'
      :data='coalitionDeathData'
@@ -11,21 +13,22 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import Form from '@/components/subComponents/Form.vue';
+// import Form from '@/components/subComponents/Form.vue';
+import SimpleForm from '@/components/subComponents/SimpleForm.vue';
 import GraphCard from '@/components/charts/GraphCard.vue';
 
 
 export default {
   name: 'Study',
   components: {
-    Form,
     GraphCard,
+    SimpleForm,
   },
   data() {
     return {
       typeOne: 'LineChart',
       chartOptionsOne: {
-        title: 'Coalition Deaths',
+        title: 'Deaths in Iraq',
         legend: { position: 'top' },
         height: 500,
         vAxis: {
