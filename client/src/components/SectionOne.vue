@@ -5,12 +5,14 @@
       </div>
       <div class='paragraphDiv'>
         <h1>About this Project</h1>
-        <p>
+        <p align="left">
           I served in the Iraq war from August of 2006 until March of 2007 as a
           U.S. Marine. I was stationed at Camp Fallujah running convoys into the
-          city of Fallujah supporting the Marines there. I've been meaning to do
-          a project about the Iraq war for quite some time now. I finally found a
-          dataset on Kaggle that will allow me to do this.
+          city of Fallujah supporting the Marine infantry in and around the city.
+          Over the course of those 7 months, I ran about 80 or so convoys and was
+          a member of quite a few others. In the summer of 2019, I did a project
+          focusing on Vietnam and deaths there. I finally found a dataset, on
+          Kaggle, that covered the Iraq war.
         </p>
       </div>
     </section>

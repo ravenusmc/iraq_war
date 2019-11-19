@@ -27,7 +27,7 @@ class Data():
         self.data = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
 
         coalitionDeathData = []
-        columns = ['TimeFrame', 'Deaths']
+        columns = ['TimeFrame', 'Coalition Deaths', 'Iraqi Forces Killed', 'Civilians Killed', 'Enemy Killed']
         coalitionDeathData.append(columns)
 
         last_month = 12
@@ -41,11 +41,14 @@ class Data():
                 date_list = []
                 month_data = data
                 month_data =  month_data.loc[(month_data['Month'] == start_month)]
-                monthly_deaths = month_data['Coalition forces killed'].sum()
                 date_list.append(start_year)
                 date = datetime.datetime(start_year, start_month, 1)
-                rows.append(date)
-                rows.append(int(monthly_deaths))
+                test = date.strftime("%b %Y")
+                rows.append(test)
+                list_of_columns = ['Coalition forces killed', 'Iraq forces killed', 'Civilian kia', 'Enemy kia']
+                for column in list_of_columns:
+                    deaths = month_data[column].sum()
+                    rows.append(int(deaths))
                 coalitionDeathData.append(rows)
                 start_month += 1
             start_month = 1
