@@ -26,6 +26,8 @@ export default {
   },
   data() {
     return {
+      checkedNames: ['Coalition forces killed', 'Iraq forces killed',
+        'Civilian kia', 'Enemy kia'],
       typeOne: 'LineChart',
       chartOptionsOne: {
         title: 'Deaths in Iraq',
@@ -53,6 +55,7 @@ export default {
     const payload = {
       startDate: '1/1/2004 12:00:00 AM',
       endDate: '1/1/2009 12:00:00 AM',
+      deathSelector: this.checkedNames,
     };
     this.buildInitialGraphs({ payload });
   },

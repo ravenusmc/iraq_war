@@ -12,7 +12,7 @@ class Data():
         self.data = pd.read_csv('./data/Deaths_only.csv')
         self.data['Date and time'] = pd.to_datetime(self.data['Date and time'], infer_datetime_format=True)
 
-    def coalitionDeathsByDate(self, first_date, last_date):
+    def coalitionDeathsByDate(self, first_date, last_date, death_Selector):
         #Converting what the user entered to proper datetime format
         first_time_stamp = pd.to_datetime(first_date)
         last_time_stamp = pd.to_datetime(last_date)
@@ -27,7 +27,10 @@ class Data():
         self.data = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
 
         coalitionDeathData = []
-        columns = ['TimeFrame', 'Coalition Deaths', 'Iraqi Forces Killed', 'Civilians Killed', 'Enemy Killed']
+        columns = ['TimeFrame']
+        for value in death_Selector:
+            columns.append(value)
+        #columns = ['TimeFrame', 'Coalition Deaths', 'Iraqi Forces Killed', 'Civilians Killed', 'Enemy Killed']
         coalitionDeathData.append(columns)
 
         last_month = 12
@@ -45,7 +48,7 @@ class Data():
                 date = datetime.datetime(start_year, start_month, 1)
                 test = date.strftime("%b %Y")
                 rows.append(test)
-                list_of_columns = ['Coalition forces killed', 'Iraq forces killed', 'Civilian kia', 'Enemy kia']
+                list_of_columns = death_Selector
                 for column in list_of_columns:
                     deaths = month_data[column].sum()
                     rows.append(int(deaths))

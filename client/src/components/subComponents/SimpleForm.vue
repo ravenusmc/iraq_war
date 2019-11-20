@@ -2,12 +2,24 @@
   <div>
     <form @submit="submitSelection">
 
-      <h5>Select the Date:</h5>
+      <h3>Select the Date:</h3>
       <div class='datePicker'>
           <label>Start Date:</label>
           <input v-model="startDate">
           <label>End Date:</label>
           <input  v-model="endDate">
+      </div>
+
+      <h3>What do you want to see on the graph:</h3>
+      <div class='deathSelector'>
+        <input type="checkbox" name="Coalition forces killed" v-model="checkedNames"
+        value="Coalition forces killed">Coalition Forces<br>
+        <input type="checkbox" name="Iraq forces killed" v-model="checkedNames"
+        value="Iraq forces killed">Iraqi Forces<br>
+        <input type="checkbox" name="Civilian kia" v-model="checkedNames"
+        value="Civilian kia">Civilians Killed<br>
+        <input type="checkbox" name="Enemy kia" v-model="checkedNames"
+        value="Enemy kia">Enemy Killed<br>
       </div>
 
       <div>
@@ -28,14 +40,7 @@ export default {
     return {
       startDate: '01/01/2004',
       endDate: '01/01/2009',
-      type: 'Non-Combat Event',
-      typeOfEvents: ['Non-Combat Event', 'Criminal Event', 'Friendly Action',
-        'Explosive Hazard', 'Enemy Action', 'Other', 'Suspicious Incident',
-        'Threat Report', 'Friendly Fire', 'criminal event', 'CRIMINAL EVENT',
-        'EXPLOSIVE HAZARD'],
-      attackType: 'ENEMY',
-      attackTypes: ['ENEMY', 'NEUTRAL', 'FRIEND'],
-
+      checkedNames: [],
     };
   },
   computed: {
@@ -54,10 +59,8 @@ export default {
       const payload = {
         startDate: this.startDate,
         endDate: this.endDate,
-        type: this.type,
-        attackType: this.attackType,
+        deathSelector: this.checkedNames,
       };
-      console.log(payload);
       this.getFormData({ payload });
     },
   },
@@ -81,6 +84,13 @@ form {
   margin-bottom: 15px;
 }
 
+.deathSelector {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 label {
   margin-left: 12px;
   margin-right: 12px;
@@ -95,6 +105,15 @@ input {
 button {
   padding: 10px;
   border-radius: 12px;
+  background-color: #3C3B6E;
+  border-color: #3C3B6E;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+button:hover {
+  padding: 12px;
+  border-radius: 14px;
   background-color: #3C3B6E;
   border-color: #3C3B6E;
   color: #FFF;

@@ -23,7 +23,8 @@ def CoalitionDeathData():
         post_data = request.get_json()
         first_date = post_data['startDate']
         last_date = post_data['endDate']
-        coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date)
+        death_Selector = post_data['deathSelector']
+        coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date, death_Selector)
         return jsonify(coalitionDeathData)
 
 if __name__ == '__main__':
