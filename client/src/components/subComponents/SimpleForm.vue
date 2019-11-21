@@ -2,7 +2,7 @@
   <div>
     <form @submit="submitSelection">
 
-      <h3>Select the Date:</h3>
+      <h3>Enter the Date:</h3>
       <div class='datePicker'>
           <label>Start Date:</label>
           <input v-model="startDate">
@@ -68,12 +68,18 @@ export default {
 </script>
 
 <style scoped>
+
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 25px;
+  background-color: #A5B8C8;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .datePicker {
@@ -94,12 +100,12 @@ form {
 label {
   margin-left: 12px;
   margin-right: 12px;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 input {
   height: 50px;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 button {

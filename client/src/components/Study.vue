@@ -1,19 +1,22 @@
 <template>
   <div>
     <hr/>
-    <h1>STUDY AREA ONE</h1>
+    <h1>Examining All Deaths</h1>
     <SimpleForm/>
     <GraphCard
      :typeOne='typeOne'
      :data='coalitionDeathData'
      :options='chartOptionsOne'>
-   </GraphCard>
+    </GraphCard>
+    <hr/>
+   <h1>Examining Coalition Deaths</h1>
+   <Form/>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-// import Form from '@/components/subComponents/Form.vue';
+import Form from '@/components/subComponents/Form.vue';
 import SimpleForm from '@/components/subComponents/SimpleForm.vue';
 import GraphCard from '@/components/charts/GraphCard.vue';
 
@@ -23,6 +26,7 @@ export default {
   components: {
     GraphCard,
     SimpleForm,
+    Form,
   },
   data() {
     return {

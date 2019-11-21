@@ -3,21 +3,21 @@
     <form @submit="submitSelection">
 
       <div class='datePicker'>
-          <h5>Select the Date:</h5>
-          <label>Start Date</label>
+          <h3>Enter the Date:</h3>
+          <label>Start Date:</label>
           <input v-model="startDate">
-          <label>End Date</label>
+          <label>End Date:</label>
           <input  v-model="endDate">
       </div>
       <div>
-          <h5>Select the Event Type:</h5>
+          <h3>Select the Event Type:</h3>
           <select v-model="type" name="type">
             <option v-for="type in typeOfEvents" v-bind:key="type" :value="type">{{ type }}</option>
           </select>
       </div>
 
       <div>
-          <h5>Select the Event Type:</h5>
+          <h3>Select the Event Type:</h3>
           <select v-model="attackType" name="attackType">
             <option v-for="attackType in attackTypes" v-bind:key="attackType" :value="attackType">
               {{ attackType }}
@@ -25,7 +25,7 @@
           </select>
       </div>
 
-      <div>
+      <div class='button_area'>
         <button>Submit</button>
       </div>
 
@@ -83,7 +83,12 @@ export default {
 form {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-bottom: 100px;
+  margin-bottom: 25px;
+  background-color: #A5B8C8;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .datePicker {
@@ -93,5 +98,30 @@ form {
   align-items: center;
   margin-left: 3%;
   margin-right: 3%;
+}
+
+.button_area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #3C3B6E;
+  border-color: #3C3B6E;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+button:hover {
+  padding: 12px;
+  border-radius: 14px;
+  background-color: #3C3B6E;
+  border-color: #3C3B6E;
+  color: #FFF;
+  text-transform: uppercase;
 }
 </style>
