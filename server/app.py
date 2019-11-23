@@ -16,8 +16,8 @@ CORS(app)
 
 # This route will deal with getting the user the data for the total number
 # of deaths between two years.
-@app.route('/CoalitionDeathData', methods=['GET', 'POST'])
-def CoalitionDeathData():
+@app.route('/DeathData', methods=['GET', 'POST'])
+def DeathData():
     if request.method == 'POST':
         data = Data()
         post_data = request.get_json()

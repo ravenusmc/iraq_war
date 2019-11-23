@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit="submitSelection">
+    <form @submit="submitSelectionTwo">
 
       <div class='datePicker'>
           <h3>Enter the Date:</h3>
@@ -23,6 +23,14 @@
               {{ attackType }}
             </option>
           </select>
+      </div>
+
+      <div class='deathSelector'>
+        <h3>Select What to See:</h3>
+        <input type="checkbox" name="Coalition forces killed" v-model="checkedNames"
+        value="Coalition forces killed">Coalition Forces<br>
+        <input type="checkbox" name="Iraq forces killed" v-model="checkedNames"
+        value="Iraq forces killed">Iraqi Forces<br>
       </div>
 
       <div class='button_area'>
@@ -50,7 +58,7 @@ export default {
         'EXPLOSIVE HAZARD'],
       attackType: 'ENEMY',
       attackTypes: ['ENEMY', 'NEUTRAL', 'FRIEND'],
-
+      checkedNames: [],
     };
   },
   computed: {
@@ -62,7 +70,7 @@ export default {
     ...mapActions([
       'getFormData',
     ]),
-    submitSelection(evt) {
+    submitSelectionTwo(evt) {
       evt.preventDefault();
       this.startDate = moment(this.startDate).format('M/D/YYYY h:mm:ss A');
       this.endDate = moment(this.endDate).format('M/D/YYYY h:mm:ss A');
@@ -71,6 +79,7 @@ export default {
         endDate: this.endDate,
         type: this.type,
         attackType: this.attackType,
+        deathSelector: this.checkedNames,
       };
       console.log(payload);
       this.getFormData({ payload });
@@ -82,7 +91,7 @@ export default {
 <style scoped>
 form {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin-bottom: 25px;
   background-color: #A5B8C8;
   padding-top: 30px;
@@ -98,6 +107,13 @@ form {
   align-items: center;
   margin-left: 3%;
   margin-right: 3%;
+}
+
+.deathSelector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .button_area {

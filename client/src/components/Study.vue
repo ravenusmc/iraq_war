@@ -5,7 +5,7 @@
     <SimpleForm/>
     <GraphCard
      :typeOne='typeOne'
-     :data='coalitionDeathData'
+     :data='deathData'
      :options='chartOptionsOne'>
     </GraphCard>
     <hr/>
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'coalitionDeathData',
+      'deathData',
     ]),
   },
   methods: {

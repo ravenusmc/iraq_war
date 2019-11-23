@@ -8,11 +8,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     formData: {},
+    deathData: {},
     coalitionDeathData: {},
   },
 
   getters: {
     formData: state => state.formData,
+    deathData: state => state.deathData,
     coalitionDeathData: state => state.coalitionDeathData,
   },
 
@@ -32,10 +34,10 @@ export default new Vuex.Store({
 
     // This action will get the coalition death data
     fetchCoalitionDeathData: ({ commit }, { payload }) => {
-      const path = 'http://localhost:5000/CoalitionDeathData';
+      const path = 'http://localhost:5000/DeathData';
       axios.post(path, payload)
         .then((res) => {
-          commit('setCoalitionDeathData', res.data);
+          commit('setDeathData', res.data);
         });
     },
 
@@ -45,6 +47,10 @@ export default new Vuex.Store({
 
     setFormData(state, data) {
       state.formData = data;
+    },
+
+    setDeathData(state, data) {
+      state.deathData = data;
     },
 
     setCoalitionDeathData(state, data) {
