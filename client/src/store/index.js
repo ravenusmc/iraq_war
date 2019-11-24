@@ -22,7 +22,7 @@ export default new Vuex.Store({
 
     // This action will build the graphs.
     buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
-      dispatch('fetchCoalitionDeathData', { payload });
+      dispatch('fetchDeathData', { payload });
       commit('setFormData', payload);
     },
 
@@ -32,12 +32,22 @@ export default new Vuex.Store({
       commit('setFormData', payload);
     },
 
-    // This action will get the coalition death data
-    fetchCoalitionDeathData: ({ commit }, { payload }) => {
+    // This action will get the death data for everything
+    fetchDeathData: ({ commit }, { payload }) => {
       const path = 'http://localhost:5000/DeathData';
       axios.post(path, payload)
         .then((res) => {
           commit('setDeathData', res.data);
+        });
+    },
+
+    // This action will get the death data that focus on coalition forces.
+    fetchCoalitionDeathData: ({ commit }, { payload }) => {
+      const path = 'http://localhost:5000/CoalitionDeathData';
+      axios.post(path, payload)
+        .then((res) => {
+          console.log(res.data);
+          commit('setCoalitionDeathData', res.data);
         });
     },
 

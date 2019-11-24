@@ -81,7 +81,6 @@ export default {
         attackType: this.attackType,
         deathSelector: this.checkedNames,
       };
-      console.log(payload);
       this.getFormData({ payload });
     },
   },
