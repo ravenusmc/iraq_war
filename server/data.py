@@ -12,7 +12,7 @@ class Data():
         self.data = pd.read_csv('./data/Deaths_only.csv')
         self.data['Date and time'] = pd.to_datetime(self.data['Date and time'], infer_datetime_format=True)
 
-    def coalitionDeathsByDate(self, first_date, last_date, death_Selector):
+    def allDeathsByDate(self, first_date, last_date, death_Selector):
         #Converting what the user entered to proper datetime format
         first_time_stamp = pd.to_datetime(first_date)
         last_time_stamp = pd.to_datetime(last_date)
@@ -58,5 +58,8 @@ class Data():
             start_year += 1
         return coalitionDeathData
 
+    def coalitionDeathsByDate(self, first_date, last_date, type, attackType, death_Selector):
+        print('GOOD')
+        return 2
 
 # test = Data()

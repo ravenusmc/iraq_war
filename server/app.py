@@ -24,8 +24,8 @@ def DeathData():
         first_date = post_data['startDate']
         last_date = post_data['endDate']
         death_Selector = post_data['deathSelector']
-        coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date, death_Selector)
-        return jsonify(coalitionDeathData)
+        all_Death_Data = data.allDeathsByDate(first_date, last_date, death_Selector)
+        return jsonify(all_Death_Data)
 
 # This route will get data for coalition forces kills between two dates.
 @app.route('/CoalitionDeathData', methods=['GET', 'POST'])
@@ -35,9 +35,10 @@ def CoalitionDeathData():
         post_data = request.get_json()
         first_date = post_data['startDate']
         last_date = post_data['endDate']
+        type = post_data['type']
+        attackType = post_data['attackType']
         death_Selector = post_data['deathSelector']
-        print(death_Selector)
-        # coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date, death_Selector)
+        coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date, type, attackType, death_Selector)
         return jsonify('Hi')
 
 if __name__ == '__main__':
