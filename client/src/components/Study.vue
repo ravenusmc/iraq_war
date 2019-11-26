@@ -11,6 +11,12 @@
     <hr/>
    <h1>Examining Coalition Deaths</h1>
    <Form/>
+   <GraphCard
+    :typeOne='typeOne'
+    :data='coalitionDeathData'
+    :options='chartOptionsTwo'>
+   </GraphCard>
+   <hr/>
   </div>
 </template>
 
@@ -34,7 +40,17 @@ export default {
         'Civilian kia', 'Enemy kia'],
       typeOne: 'LineChart',
       chartOptionsOne: {
-        title: 'Deaths in Iraq',
+        title: 'All Deaths in Iraq',
+        legend: { position: 'top' },
+        height: 500,
+        vAxis: {
+          viewWindow: {
+            min: 0,
+          },
+        },
+      },
+      chartOptionsTwo: {
+        title: 'Coalition/Iraqi Forces Deaths in Iraq',
         legend: { position: 'top' },
         height: 500,
         vAxis: {
@@ -48,6 +64,7 @@ export default {
   computed: {
     ...mapGetters([
       'deathData',
+      'coalitionDeathData',
     ]),
   },
   methods: {
