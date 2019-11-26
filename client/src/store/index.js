@@ -20,10 +20,16 @@ export default new Vuex.Store({
 
   actions: {
 
-    // This action will build the graphs.
+    // This action will build the first graph.
     buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
       dispatch('fetchDeathData', { payload });
       commit('setFormData', payload);
+    },
+
+    // This action will build the second graph when the application is mounted
+    buildInitialGraphsTwo: ({ dispatch }, { payload2 }) => {
+      dispatch('fetchCoalitionDeathDataMounted', { payload2 });
+      // commit('setFormData', payload);
     },
 
     // This action will get the initial data and then build a graph based on that data
@@ -41,8 +47,20 @@ export default new Vuex.Store({
         });
     },
 
+    // This action will get the death data that focus on coalition forces when the
+    // application initially loads.
+    fetchCoalitionDeathDataMounted: ({ commit }, { payload2 }) => {
+      console.log(payload2);
+      const path = 'http://localhost:5000/CoalitionDeathData';
+      axios.post(path, payload2)
+        .then((res) => {
+          commit('setCoalitionDeathData', res.data);
+        });
+    },
+
     // This action will get the death data that focus on coalition forces.
     fetchCoalitionDeathData: ({ commit }, { payload }) => {
+      console.log(payload);
       const path = 'http://localhost:5000/CoalitionDeathData';
       axios.post(path, payload)
         .then((res) => {

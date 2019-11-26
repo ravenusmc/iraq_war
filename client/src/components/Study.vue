@@ -36,8 +36,10 @@ export default {
   },
   data() {
     return {
+      type: 'Non-Combat Event',
       checkedNames: ['Coalition forces killed', 'Iraq forces killed',
         'Civilian kia', 'Enemy kia'],
+      checkedNamesTwo: ['Coalition forces killed', 'Iraq forces killed'],
       typeOne: 'LineChart',
       chartOptionsOne: {
         title: 'All Deaths in Iraq',
@@ -70,15 +72,24 @@ export default {
   methods: {
     ...mapActions([
       'buildInitialGraphs',
+      'buildInitialGraphsTwo',
     ]),
   },
   mounted() {
     const payload = {
       startDate: '1/1/2004 12:00:00 AM',
       endDate: '1/1/2009 12:00:00 AM',
+      type: this.type,
       deathSelector: this.checkedNames,
     };
+    const payload2 = {
+      startDate: '1/1/2004 12:00:00 AM',
+      endDate: '1/1/2009 12:00:00 AM',
+      type: this.type,
+      deathSelector: this.checkedNamesTwo,
+    };
     this.buildInitialGraphs({ payload });
+    this.buildInitialGraphsTwo({ payload2 });
   },
 };
 </script>
