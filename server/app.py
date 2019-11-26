@@ -36,10 +36,9 @@ def CoalitionDeathData():
         first_date = post_data['startDate']
         last_date = post_data['endDate']
         type = post_data['type']
-        attackType = post_data['attackType']
         death_Selector = post_data['deathSelector']
-        coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date, type, attackType, death_Selector)
-        return jsonify('Hi')
+        coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date, type, death_Selector)
+        return jsonify(coalitionDeathData)
 
 if __name__ == '__main__':
     app.run()

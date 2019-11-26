@@ -16,15 +16,6 @@
           </select>
       </div>
 
-      <div>
-          <h3>Select the Event Type:</h3>
-          <select v-model="attackType" name="attackType">
-            <option v-for="attackType in attackTypes" v-bind:key="attackType" :value="attackType">
-              {{ attackType }}
-            </option>
-          </select>
-      </div>
-
       <div class='deathSelector'>
         <h3>Select What to See:</h3>
         <input type="checkbox" name="Coalition forces killed" v-model="checkedNames"
@@ -56,8 +47,6 @@ export default {
         'Explosive Hazard', 'Enemy Action', 'Other', 'Suspicious Incident',
         'Threat Report', 'Friendly Fire', 'criminal event', 'CRIMINAL EVENT',
         'EXPLOSIVE HAZARD'],
-      attackType: 'ENEMY',
-      attackTypes: ['ENEMY', 'NEUTRAL', 'FRIEND'],
       checkedNames: [],
     };
   },
@@ -78,7 +67,6 @@ export default {
         startDate: this.startDate,
         endDate: this.endDate,
         type: this.type,
-        attackType: this.attackType,
         deathSelector: this.checkedNames,
       };
       this.getFormData({ payload });
@@ -90,7 +78,7 @@ export default {
 <style scoped>
 form {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 25px;
   background-color: #A5B8C8;
   padding-top: 30px;
