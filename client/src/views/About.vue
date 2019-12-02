@@ -12,8 +12,6 @@
     </div>
     <!-- End of Header Area -->
 
-    <hr/>
-
     <!-- Start of content area -->
     <div class='about_content_area'>
 
