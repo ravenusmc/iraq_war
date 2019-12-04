@@ -8,7 +8,7 @@
 
     <!-- Header area -->
     <div class='about_header'>
-      <h1>About Me</h1>
+      <h1>About Mike</h1>
     </div>
     <!-- End of Header Area -->
 
