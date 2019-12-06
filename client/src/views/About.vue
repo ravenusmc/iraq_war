@@ -9,8 +9,6 @@
     <!-- Header area -->
     <div class='about_header'>
       <h1>About The Creator</h1>
-      <hr>
-      <h2>Mike Cuddy</h2>
     </div>
     <!-- End of Header Area -->
 
