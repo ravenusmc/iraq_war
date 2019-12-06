@@ -10,6 +10,7 @@ export default new Vuex.Store({
     formData: {},
     deathData: {},
     coalitionDeathData: {},
+    averageCoalitionDeaths: [],
   },
 
   getters: {

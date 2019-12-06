@@ -12,6 +12,18 @@ class Data():
         self.data = pd.read_csv('./data/Deaths_only.csv')
         self.data['Date and time'] = pd.to_datetime(self.data['Date and time'], infer_datetime_format=True)
 
+    def averageCoalitionDeaths(self):
+        year = 2005
+        while year <= 2009:
+            year = str(int(year))
+            first_time_stamp = pd.to_datetime(year + '-01-01')
+            last_time_stamp = pd.to_datetime(year + '-12-31')
+            data_by_year = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
+            sum_deaths = data_by_year['Coalition forces killed'].sum()
+            print(sum_deaths)
+            input()
+            year = int(year) + 1
+
     def allDeathsByDate(self, first_date, last_date, death_Selector):
         #Converting what the user entered to proper datetime format
         first_time_stamp = pd.to_datetime(first_date)
@@ -104,7 +116,8 @@ class Data():
                 start_month += 1
             start_month = 1
             start_year += 1
-            
+
         return death_Data
 
-# test = Data()
+test = Data()
+test.averageCoalitionDeaths()
