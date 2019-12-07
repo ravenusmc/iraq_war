@@ -10,13 +10,14 @@ export default new Vuex.Store({
     formData: {},
     deathData: {},
     coalitionDeathData: {},
-    averageCoalitionDeaths: [],
+    CoalitionDeathsByYear: [],
   },
 
   getters: {
     formData: state => state.formData,
     deathData: state => state.deathData,
     coalitionDeathData: state => state.coalitionDeathData,
+    CoalitionDeathsByYear: state => state.CoalitionDeathsByYear,
   },
 
   actions: {
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     // This action will build the first graph.
     buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
       dispatch('fetchDeathData', { payload });
+      dispatch('fetchCoalitionDeathsByYear');
       commit('setFormData', payload);
     },
 
@@ -69,6 +71,11 @@ export default new Vuex.Store({
         });
     },
 
+    // This action will get the coalition death data by year.
+    // fetchCoalitionDeathsByYear: ({commit} ) => {
+    //
+    // },
+
   },
 
   mutations: {
@@ -83,6 +90,10 @@ export default new Vuex.Store({
 
     setCoalitionDeathData(state, data) {
       state.coalitionDeathData = data;
+    },
+
+    setCoalitionDeathsByYear(state, data) {
+      state.CoalitionDeathsByYear = data;
     },
 
   },

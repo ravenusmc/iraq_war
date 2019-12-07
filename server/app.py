@@ -40,5 +40,12 @@ def CoalitionDeathData():
         coalitionDeathData = data.coalitionDeathsByDate(first_date, last_date, type, death_Selector)
         return jsonify(coalitionDeathData)
 
+# This route will get data for coalition deaths by year.
+@app.route('/CoalitionDeathDataByYear', methods=['GET'])
+def CoalitionDeathDataByYear():
+    data = Data()
+    coalitionDeaths = data.sum_Of_Coalition_Deaths()
+    return jsonify(coalitionDeaths)
+
 if __name__ == '__main__':
     app.run()

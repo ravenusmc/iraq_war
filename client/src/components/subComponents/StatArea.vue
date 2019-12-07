@@ -4,19 +4,19 @@
       <div>
         <h1 class='statPageTitle'>Basic Stat Area</h1>
       </div>
-
+      <!-- This is the stats section that gives total deaths by year -->
       <section class='statArea'>
         <div>
-          <h4>Average Coalition Deaths by Year</h4>
+          <h4>Coalition Deaths by Year</h4>
         </div>
         <div>
-          <h4>Average Iraqi Forces Deaths by Year</h4>
+          <h4>Iraqi Forces Deaths by Year</h4>
         </div>
         <div>
-          <h4>Average Civilian Deaths by Year</h4>
+          <h4>Civilian Deaths by Year</h4>
         </div>
         <div>
-          <h4>Average Enemy Deaths by Year</h4>
+          <h4>Enemy Deaths by Year</h4>
         </div>
       </section>
     </section>
@@ -26,6 +26,9 @@
 <script>
 export default {
   name: 'StatArea',
+  mounted() {
+    this.buildInitialGraphs();
+  },
 };
 </script>
 
