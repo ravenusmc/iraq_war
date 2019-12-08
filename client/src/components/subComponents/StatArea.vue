@@ -24,10 +24,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'StatArea',
+  methods: {
+    ...mapActions([
+      'buildDataArea',
+    ]),
+  },
   mounted() {
-    this.buildInitialGraphs();
+    this.buildDataArea();
   },
 };
 </script>
