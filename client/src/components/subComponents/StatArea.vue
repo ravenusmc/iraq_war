@@ -14,6 +14,9 @@
         </div>
         <div>
           <h4>Iraqi Forces Deaths by Year</h4>
+          <li v-for="(value, deaths) in IraqiForcesByyear" v-bind:key="deaths">
+            {{ deaths }}: {{ value }}
+          </li>
         </div>
         <div>
           <h4>Civilian Deaths by Year</h4>
@@ -34,6 +37,7 @@ export default {
   computed: {
     ...mapGetters([
       'CoalitionDeathsByYear',
+      'IraqiForcesByyear',
     ]),
   },
   methods: {

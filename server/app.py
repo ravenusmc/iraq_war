@@ -44,8 +44,15 @@ def CoalitionDeathData():
 @app.route('/CoalitionDeathDataByYear', methods=['GET'])
 def CoalitionDeathDataByYear():
     data = Data()
-    coalitionDeaths = data.sum_Of_Coalition_Deaths()
-    return jsonify(coalitionDeaths)
+    all_deaths = []
+    coalition = "Coalition forces killed"
+    Iraqi_force_deaths = "Iraq forces killed"
+    coalitionDeaths = data.sum_Of_Deaths(coalition)
+    all_deaths.append(coalitionDeaths)
+    Iraqi_Force_Deaths = data.sum_Of_Deaths(Iraqi_force_deaths)
+    all_deaths.append(Iraqi_Force_Deaths)
+    print(all_deaths)
+    return jsonify(all_deaths)
 
 if __name__ == '__main__':
     app.run()

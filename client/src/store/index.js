@@ -11,6 +11,7 @@ export default new Vuex.Store({
     deathData: {},
     coalitionDeathData: {},
     CoalitionDeathsByYear: [],
+    IraqiForcesByyear: [],
   },
 
   getters: {
@@ -18,13 +19,14 @@ export default new Vuex.Store({
     deathData: state => state.deathData,
     coalitionDeathData: state => state.coalitionDeathData,
     CoalitionDeathsByYear: state => state.CoalitionDeathsByYear,
+    IraqiForcesByyear: state => state.IraqiForcesByyear,
   },
 
   actions: {
 
     // This action will build the data area
     buildDataArea: ({ dispatch }) => {
-      dispatch('fetchCoalitionDeathsByYear');
+      dispatch('fetchDeathsByYear');
     },
 
     // This action will build the first graph.
@@ -74,12 +76,15 @@ export default new Vuex.Store({
     },
 
     // This action will get the coalition death data by year.
-    fetchCoalitionDeathsByYear: ({ commit }) => {
+    fetchDeathsByYear: ({ commit }) => {
       const path = 'http://localhost:5000/CoalitionDeathDataByYear';
       axios.get(path)
         .then((res) => {
           console.log(res.data);
-          commit('setCoalitionDeathsByYear', res.data);
+          const coalitionDeaths = res.data[0];
+          const iraqiForcesDeaths = res.data[1];
+          commit('setCoalitionDeathsByYear', coalitionDeaths);
+          commit('setIraqiForcesByyear', iraqiForcesDeaths);
         });
     },
 
@@ -101,6 +106,10 @@ export default new Vuex.Store({
 
     setCoalitionDeathsByYear(state, data) {
       state.CoalitionDeathsByYear = data;
+    },
+
+    setIraqiForcesByyear(state, data) {
+      state.IraqiForcesByyear = data;
     },
 
   },

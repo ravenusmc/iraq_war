@@ -12,19 +12,31 @@ class Data():
         self.data = pd.read_csv('./data/Deaths_only.csv')
         self.data['Date and time'] = pd.to_datetime(self.data['Date and time'], infer_datetime_format=True)
 
-    def sum_Of_Coalition_Deaths(self):
-        coalition_Deaths = {}
+    def sum_Of_Deaths(self, column):
+        Deaths = {}
         year = 2005
         while year <= 2009:
             year = str(int(year))
             first_time_stamp = pd.to_datetime(year + '-01-01')
             last_time_stamp = pd.to_datetime(year + '-12-31')
             data_by_year = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
-            sum_deaths = int(data_by_year['Coalition forces killed'].sum())
-            coalition_Deaths[year] = sum_deaths
-            # coalition_Deaths.append(sum_deaths)
+            sum_deaths = int(data_by_year[column].sum())
+            Deaths[year] = sum_deaths
             year = int(year) + 1
-        return coalition_Deaths
+        return Deaths
+
+    def sum_Of_Iraqi_Force_Deaths(self):
+            Iraqi_Force_Deaths = {}
+            year = 2005
+            while year <= 2009:
+                year = str(int(year))
+                first_time_stamp = pd.to_datetime(year + '-01-01')
+                last_time_stamp = pd.to_datetime(year + '-12-31')
+                data_by_year = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
+                sum_deaths = int(data_by_year['Iraq forces killed'].sum())
+                Iraqi_Force_Deaths[year] = sum_deaths
+                year = int(year) + 1
+            return coalition_Deaths
 
     def allDeathsByDate(self, first_date, last_date, death_Selector):
         #Converting what the user entered to proper datetime format
