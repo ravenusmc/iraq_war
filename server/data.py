@@ -13,7 +13,7 @@ class Data():
         self.data['Date and time'] = pd.to_datetime(self.data['Date and time'], infer_datetime_format=True)
 
     def sum_Of_Coalition_Deaths(self):
-        coalition_Deaths = []
+        coalition_Deaths = {}
         year = 2005
         while year <= 2009:
             year = str(int(year))
@@ -21,7 +21,8 @@ class Data():
             last_time_stamp = pd.to_datetime(year + '-12-31')
             data_by_year = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
             sum_deaths = int(data_by_year['Coalition forces killed'].sum())
-            coalition_Deaths.append(sum_deaths)
+            coalition_Deaths[year] = sum_deaths
+            # coalition_Deaths.append(sum_deaths)
             year = int(year) + 1
         return coalition_Deaths
 

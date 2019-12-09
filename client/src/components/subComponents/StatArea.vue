@@ -8,6 +8,9 @@
       <section class='statArea'>
         <div>
           <h4>Coalition Deaths by Year</h4>
+          <li v-for="(value, deaths) in CoalitionDeathsByYear" v-bind:key="deaths">
+            {{ deaths }}: {{ value }}
+          </li>
         </div>
         <div>
           <h4>Iraqi Forces Deaths by Year</h4>
@@ -24,10 +27,15 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'StatArea',
+  computed: {
+    ...mapGetters([
+      'CoalitionDeathsByYear',
+    ]),
+  },
   methods: {
     ...mapActions([
       'buildDataArea',
