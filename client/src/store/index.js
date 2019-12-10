@@ -12,6 +12,8 @@ export default new Vuex.Store({
     coalitionDeathData: {},
     CoalitionDeathsByYear: [],
     IraqiForcesByyear: [],
+    civilianDeathsByYear: [],
+    enemyDeathsByYear: [],
   },
 
   getters: {
@@ -20,6 +22,8 @@ export default new Vuex.Store({
     coalitionDeathData: state => state.coalitionDeathData,
     CoalitionDeathsByYear: state => state.CoalitionDeathsByYear,
     IraqiForcesByyear: state => state.IraqiForcesByyear,
+    civilianDeathsByYear: state => state.civilianDeathsByYear,
+    enemyDeathsByYear: state => state.enemyDeathsByYear,
   },
 
   actions: {
@@ -83,8 +87,12 @@ export default new Vuex.Store({
           console.log(res.data);
           const coalitionDeaths = res.data[0];
           const iraqiForcesDeaths = res.data[1];
+          const civilianDeaths = res.data[2];
+          const enemyDeaths = res.data[3];
           commit('setCoalitionDeathsByYear', coalitionDeaths);
           commit('setIraqiForcesByyear', iraqiForcesDeaths);
+          commit('setCivilianDeathsByYear', civilianDeaths);
+          commit('setEnemyDeathsByYear', enemyDeaths);
         });
     },
 
@@ -110,6 +118,14 @@ export default new Vuex.Store({
 
     setIraqiForcesByyear(state, data) {
       state.IraqiForcesByyear = data;
+    },
+
+    setCivilianDeathsByYear(state, data) {
+      state.civilianDeathsByYear = data;
+    },
+
+    setEnemyDeathsByYear(state, data) {
+      state.enemyDeathsByYear = data;
     },
 
   },

@@ -2,7 +2,7 @@
   <div>
     <section>
       <div>
-        <h1 class='statPageTitle'>Basic Stat Area</h1>
+        <h1 class='statPageTitle'>Deaths by Year By Group</h1>
       </div>
       <!-- This is the stats section that gives total deaths by year -->
       <section class='statArea'>
@@ -20,9 +20,15 @@
         </div>
         <div>
           <h4>Civilian Deaths by Year</h4>
+          <li v-for="(value, deaths) in civilianDeathsByYear" v-bind:key="deaths">
+            {{ deaths }}: {{ value }}
+          </li>
         </div>
         <div>
           <h4>Enemy Deaths by Year</h4>
+          <li v-for="(value, deaths) in enemyDeathsByYear" v-bind:key="deaths">
+            {{ deaths }}: {{ value }}
+          </li>
         </div>
       </section>
     </section>
@@ -38,6 +44,8 @@ export default {
     ...mapGetters([
       'CoalitionDeathsByYear',
       'IraqiForcesByyear',
+      'civilianDeathsByYear',
+      'enemyDeathsByYear',
     ]),
   },
   methods: {
