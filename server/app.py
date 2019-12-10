@@ -46,17 +46,9 @@ def CoalitionDeathDataByYear():
     data = Data()
     all_deaths = []
     deaths = ["Coalition forces killed", "Iraq forces killed", "Civilian kia", "Enemy kia"]
-    # coalition = "Coalition forces killed"
-    # Iraqi_force_deaths = "Iraq forces killed"
-    # civilian_killed = "Civilian kia"
-    # enemy_killed = "Enemy kia"
     for death in deaths:
         deaths_returned = data.sum_Of_Deaths(death)
         all_deaths.append(deaths_returned)
-    # coalitionDeaths = data.sum_Of_Deaths(coalition)
-    # all_deaths.append(coalitionDeaths)
-    # Iraqi_Force_Deaths = data.sum_Of_Deaths(Iraqi_force_deaths)
-    # all_deaths.append(Iraqi_Force_Deaths)
     return jsonify(all_deaths)
 
 if __name__ == '__main__':

@@ -4,7 +4,6 @@
       <div>
         <h1 class='statPageTitle'>Deaths by Year By Group</h1>
       </div>
-      <!-- This is the stats section that gives total deaths by year -->
       <section class='statArea'>
         <div>
           <h4>Coalition Deaths by Year</h4>

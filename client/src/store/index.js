@@ -84,7 +84,6 @@ export default new Vuex.Store({
       const path = 'http://localhost:5000/CoalitionDeathDataByYear';
       axios.get(path)
         .then((res) => {
-          console.log(res.data);
           const coalitionDeaths = res.data[0];
           const iraqiForcesDeaths = res.data[1];
           const civilianDeaths = res.data[2];
