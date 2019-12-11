@@ -25,6 +25,10 @@ class Data():
             year = int(year) + 1
         return Deaths
 
+    def deaths_by_region(self):
+        regions = ['MND-BAGHDAD', 'MNF-W', 'MND-N', 'MND-SE', 'MND-C', 'MND-NE', 'MND-S']
+        regions_and_deaths = {}
+
     def sum_Of_Iraqi_Force_Deaths(self):
             Iraqi_Force_Deaths = {}
             year = 2005
@@ -133,5 +137,5 @@ class Data():
 
         return death_Data
 
-# test = Data()
-# test.sum_Of_Coalition_Deaths()
+test = Data()
+test.deaths_by_region()
