@@ -8,6 +8,25 @@
         <div id='mapArea'>
         </div>
       </div>
+      <div>
+        <form @submit="submitYear">
+
+          <div>
+              <h3>Select the Event Type:</h3>
+              <select v-model="year" name="year">
+                <option v-for="year in years" v-bind:key="year"
+                :value="year">
+                  {{ year }}
+                </option>
+              </select>
+          </div>
+
+          <div class='button_area'>
+            <button>Submit</button>
+          </div>
+
+        </form>
+      </div>
     </section>
   </div>
 </template>
@@ -15,10 +34,50 @@
 <script>
 export default {
   name: 'Location',
+  data() {
+    return {
+      year: 2005,
+      years: [2005, 2006, 2007, 2008, 2009],
+    };
+  },
+  methods: {
+    submitYear(evt) {
+      evt.preventDefault();
+      const payload = {
+        year: this.year,
+      };
+      console.log(payload);
+    },
+  },
 };
 </script>
 
 <style scoped>
+.button_area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #3C3B6E;
+  border-color: #3C3B6E;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+button:hover {
+  padding: 12px;
+  border-radius: 14px;
+  background-color: #3C3B6E;
+  border-color: #3C3B6E;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
 .titleArea {
   text-align: center;
   text-transform: uppercase;
