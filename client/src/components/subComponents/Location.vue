@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Location',
   data() {
@@ -41,6 +43,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'buildInitialDeathsByRegionArea',
+    ]),
     submitYear(evt) {
       evt.preventDefault();
       const payload = {
@@ -48,6 +53,12 @@ export default {
       };
       console.log(payload);
     },
+  },
+  mounted() {
+    const payload = {
+      year: this.year,
+    };
+    this.buildInitialDeathsByRegionArea({ payload });
   },
 };
 </script>
@@ -91,6 +102,5 @@ button:hover {
   background-size: cover;
   background-repeat: no-repeat;
   height: 500px;
-  border: 2px solid red;
 }
 </style>

@@ -14,6 +14,7 @@ export default new Vuex.Store({
     IraqiForcesByyear: [],
     civilianDeathsByYear: [],
     enemyDeathsByYear: [],
+    deathsByRegion: {},
   },
 
   getters: {
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     IraqiForcesByyear: state => state.IraqiForcesByyear,
     civilianDeathsByYear: state => state.civilianDeathsByYear,
     enemyDeathsByYear: state => state.enemyDeathsByYear,
+    deathsByRegion: state => state.deathsByRegion,
   },
 
   actions: {
@@ -31,6 +33,11 @@ export default new Vuex.Store({
     // This action will build the data area
     buildDataArea: ({ dispatch }) => {
       dispatch('fetchDeathsByYear');
+    },
+
+    // This action will build the inital graph for the deaths by region area.
+    buildInitialDeathsByRegionArea: ({ dispatch }, { payload }) => {
+      dispatch('fetchDeathsByRegion', { payload });
     },
 
     // This action will build the first graph.
@@ -95,6 +102,17 @@ export default new Vuex.Store({
         });
     },
 
+    // This action will fetch deaths by region based on the year that the user
+    // entered.
+    fetchDeathsByRegion: ({ commit }, { payload }) => {
+      const path = 'http://localhost:5000/DeathsByRegion';
+      axios.post(path, payload)
+        .then((res) => {
+          console.log(res.data);
+          commit('setDeathsByRegion', payload);
+        });
+    },
+
   },
 
   mutations: {
@@ -125,6 +143,10 @@ export default new Vuex.Store({
 
     setEnemyDeathsByYear(state, data) {
       state.enemyDeathsByYear = data;
+    },
+
+    setDeathsByRegion(state, data) {
+      state.deathsByRegion = data;
     },
 
   },

@@ -25,7 +25,8 @@ class Data():
             year = int(year) + 1
         return Deaths
 
-    def deaths_by_region(self):
+    def deaths_by_region(self, year):
+        print(year)
         regions = ['MND-BAGHDAD', 'MNF-W', 'MND-N', 'MND-SE', 'MND-C', 'MND-NE', 'MND-S']
         regions_and_deaths = {}
 
@@ -137,5 +138,5 @@ class Data():
 
         return death_Data
 
-test = Data()
-test.deaths_by_region()
+# test = Data()
+# test.deaths_by_region()
