@@ -54,11 +54,13 @@ def CoalitionDeathDataByYear():
 # This route will get data for the coalition deaths by region
 @app.route('/DeathsByRegion', methods=['Get', 'Post'])
 def DeathsByRegion():
-    data = Data()
-    post_data = request.get_json()
-    year = post_data['year']
-    data.deaths_by_region(year)
-    return jsonify('Hi')
+    if request.method == 'POST':
+        data = Data()
+        post_data = request.get_json()
+        year = post_data['year']
+        deaths_by_region = data.deaths_by_region(year)
+        print(deaths_by_region)
+        return jsonify(deaths_by_region)
 
 if __name__ == '__main__':
     app.run()

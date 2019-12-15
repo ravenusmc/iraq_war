@@ -26,9 +26,27 @@ class Data():
         return Deaths
 
     def deaths_by_region(self, year):
-        print(year)
+        region_death_data = []
         regions = ['MND-BAGHDAD', 'MNF-W', 'MND-N', 'MND-SE', 'MND-C', 'MND-NE', 'MND-S']
-        regions_and_deaths = {}
+        columns = ['Deaths', 'Region']
+        # for region in regions:
+        #     columns.append(region)
+        region_death_data.append(columns)
+        year = str(int(year))
+        first_time_stamp = pd.to_datetime(year + '-01-01')
+        last_time_stamp = pd.to_datetime(year + '-12-31')
+        data = self.data.loc[(self.data['Date and time'] >= first_time_stamp) & (self.data['Date and time'] <= last_time_stamp), :]
+        for region in regions:
+            #resetting the dataframe for each loop
+            region_data = data
+            rows = []
+            deaths_by_region_data = data[(data.Region == region)]
+            deaths_by_region = int(deaths_by_region_data['Coalition forces killed'].sum())
+            rows.append(region)
+            rows.append(int(deaths_by_region))
+            region_death_data.append(rows)
+        return deaths_by_region
+
 
     def sum_Of_Iraqi_Force_Deaths(self):
             Iraqi_Force_Deaths = {}
@@ -135,8 +153,7 @@ class Data():
                 start_month += 1
             start_month = 1
             start_year += 1
-
         return death_Data
 
-# test = Data()
-# test.deaths_by_region()
+test = Data()
+test.deaths_by_region(2005)
