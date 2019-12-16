@@ -72,13 +72,14 @@ export default {
   methods: {
     ...mapActions([
       'buildInitialDeathsByRegionArea',
+      'fetchDeathsByRegion',
     ]),
     submitYear(evt) {
       evt.preventDefault();
       const payload = {
         year: this.year,
       };
-      console.log(payload);
+      this.fetchDeathsByRegion({ payload });
     },
   },
   mounted() {
@@ -108,8 +109,6 @@ button {
 }
 
 button:hover {
-  padding: 12px;
-  border-radius: 14px;
   background-color: #3C3B6E;
   border-color: #3C3B6E;
   color: #FFF;

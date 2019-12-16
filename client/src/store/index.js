@@ -108,10 +108,10 @@ export default new Vuex.Store({
       const path = 'http://localhost:5000/DeathsByRegion';
       axios.post(path, payload)
         .then((res) => {
+          res.data.sort((a, b) => b[1] - a[1]);
           commit('setDeathsByRegion', res.data);
         });
     },
-
   },
 
   mutations: {
