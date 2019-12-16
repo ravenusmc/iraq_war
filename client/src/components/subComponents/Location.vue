@@ -27,20 +27,47 @@
 
         </form>
       </div>
+      <div>
+        <GraphCard
+         :typeOne='typeOne'
+         :data='deathsByRegion'
+         :options='regionChartOptions'>
+        </GraphCard>
+      </div>
     </section>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+import GraphCard from '@/components/charts/GraphCard.vue';
 
 export default {
   name: 'Location',
+  components: {
+    GraphCard,
+  },
   data() {
     return {
+      typeOne: 'BarChart',
       year: 2005,
       years: [2005, 2006, 2007, 2008, 2009],
+      regionChartOptions: {
+        title: 'Deaths in Iraq by Region',
+        legend: { position: 'top' },
+        height: 500,
+        vAxis: {
+          viewWindow: {
+            min: 0,
+          },
+        },
+      },
     };
+  },
+  computed: {
+    ...mapGetters([
+      'deathsByRegion',
+    ]),
   },
   methods: {
     ...mapActions([
