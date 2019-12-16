@@ -108,8 +108,7 @@ export default new Vuex.Store({
       const path = 'http://localhost:5000/DeathsByRegion';
       axios.post(path, payload)
         .then((res) => {
-          console.log(res.data);
-          commit('setDeathsByRegion', payload);
+          commit('setDeathsByRegion', res.data);
         });
     },
 

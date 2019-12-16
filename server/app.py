@@ -59,7 +59,6 @@ def DeathsByRegion():
         post_data = request.get_json()
         year = post_data['year']
         deaths_by_region = data.deaths_by_region(year)
-        print(deaths_by_region)
         return jsonify(deaths_by_region)
 
 if __name__ == '__main__':
