@@ -8,11 +8,11 @@
         <div id='mapArea'>
         </div>
       </div>
-      <div>
+      <div class='formAndGraphArea'>
         <form @submit="submitYear">
 
           <div>
-              <h3>Select the Event Type:</h3>
+              <h1>Select the Year:</h1>
               <select v-model="year" name="year">
                 <option v-for="year in years" v-bind:key="year"
                 :value="year">
@@ -26,14 +26,13 @@
           </div>
 
         </form>
-      </div>
-      <div>
         <GraphCard
          :typeOne='typeOne'
          :data='deathsByRegion'
          :options='regionChartOptions'>
         </GraphCard>
       </div>
+
     </section>
   </div>
 </template>
@@ -99,7 +98,25 @@ export default {
   align-items: center;
 }
 
+.formAndGraphArea {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+select {
+  font-size: 20px;
+}
+
 button {
+  margin-top: 20px;
   padding: 10px;
   border-radius: 12px;
   background-color: #3C3B6E;
@@ -109,9 +126,9 @@ button {
 }
 
 button:hover {
-  background-color: #3C3B6E;
+  background-color: #FFF;;
   border-color: #3C3B6E;
-  color: #FFF;
+  color: #3C3B6E;
   text-transform: uppercase;
 }
 
