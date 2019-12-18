@@ -23,7 +23,10 @@
 
           <div class='button_area'>
             <button>Submit</button>
+            <h3 v-if='gettingResponseRegion'>Getting Response...</h3>
           </div>
+
+          <h1 v-if="regionResponse">Response Received</h1>
 
         </form>
         <GraphCard
@@ -38,7 +41,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import GraphCard from '@/components/charts/GraphCard.vue';
 
 export default {
@@ -66,6 +69,8 @@ export default {
   computed: {
     ...mapGetters([
       'deathsByRegion',
+      'regionResponse',
+      'gettingResponseRegion',
     ]),
   },
   methods: {
@@ -73,12 +78,19 @@ export default {
       'buildInitialDeathsByRegionArea',
       'fetchDeathsByRegion',
     ]),
+    ...mapMutations([
+      'setRegionResponse',
+      'setGettingResponseRegion',
+    ]),
     submitYear(evt) {
       evt.preventDefault();
+      this.getting_response = true;
       const payload = {
         year: this.year,
       };
       this.fetchDeathsByRegion({ payload });
+      this.setGettingResponseRegion(true);
+      this.setRegionResponse(false);
     },
   },
   mounted() {

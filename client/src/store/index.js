@@ -15,6 +15,8 @@ export default new Vuex.Store({
     civilianDeathsByYear: [],
     enemyDeathsByYear: [],
     deathsByRegion: {},
+    regionResponse: false,
+    gettingResponseRegion: false,
   },
 
   getters: {
@@ -26,6 +28,8 @@ export default new Vuex.Store({
     civilianDeathsByYear: state => state.civilianDeathsByYear,
     enemyDeathsByYear: state => state.enemyDeathsByYear,
     deathsByRegion: state => state.deathsByRegion,
+    regionResponse: state => state.regionResponse,
+    gettingResponseRegion: state => state.gettingResponseRegion,
   },
 
   actions: {
@@ -109,7 +113,10 @@ export default new Vuex.Store({
       axios.post(path, payload)
         .then((res) => {
           res.data.sort((a, b) => b[1] - a[1]);
+          const regionResponse = true;
           commit('setDeathsByRegion', res.data);
+          commit('setRegionResponse', regionResponse);
+          commit('setGettingResponseRegion', false);
         });
     },
   },
@@ -146,6 +153,14 @@ export default new Vuex.Store({
 
     setDeathsByRegion(state, data) {
       state.deathsByRegion = data;
+    },
+
+    setGettingResponseRegion(state, data) {
+      state.gettingResponseRegion = data;
+    },
+
+    setRegionResponse(state, data) {
+      state.regionResponse = data;
     },
 
   },
