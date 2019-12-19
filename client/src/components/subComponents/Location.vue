@@ -26,7 +26,7 @@
             <h3 v-if='gettingResponseRegion'>Getting Response...</h3>
           </div>
 
-          <h1 v-if="regionResponse">Response Received</h1>
+          <h3 v-if="regionResponse">Response Received</h3>
 
         </form>
         <GraphCard
@@ -153,9 +153,9 @@ button:hover {
   margin-left: 5%;
   margin-right: 5%;
   background-image: url('../../assets/img/MND_regions.png');
+  background-size: 100% 100%;
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
-  height: 500px;
+  height: 600px;
 }
 </style>
