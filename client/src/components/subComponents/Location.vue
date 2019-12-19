@@ -2,10 +2,22 @@
   <div>
     <section>
       <div>
-        <h1 class='titleArea'>Deaths by Command Region</h1>
+          <h1 class='titleArea'>Deaths by Command Region</h1>
       </div>
       <div>
         <div id='mapArea'>
+          <div class='Baghdad_div'>
+            <h1 class='regionFix'>123</h1>
+          </div>
+          <div class='West_div'>
+            <h1 class='regionFix'>456</h1>
+          </div>
+          <div class='MND-N_div'>
+            <h1 class='regionFix'>789</h1>
+          </div>
+          <div class='MND-NE_div'>
+            <h1 class='regionFix'>987</h1>
+          </div>
         </div>
       </div>
       <div class='formAndGraphArea'>
@@ -158,4 +170,47 @@ button:hover {
   background-repeat: no-repeat;
   height: 600px;
 }
+
+.Baghdad_div {
+  position: relative;
+  top: 42%;
+  left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.West_div {
+  position: relative;
+  top: 30%;
+  right: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MND-N_div {
+  position: relative;
+  top: -20%;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MND-NE_div {
+  position: relative;
+  top: -8%;
+  left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.regionFix {
+  padding: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+}
+
 </style>
