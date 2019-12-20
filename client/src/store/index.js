@@ -129,10 +129,18 @@ export default new Vuex.Store({
           console.log(res.data);
           res.data.forEach(([key, value]) => {
             if (key === 'MND-BAGHDAD') {
-              const MndBaghdadDeaths = value;
-              commit('setMNDBaghdadDeaths', MndBaghdadDeaths);
+              commit('setMNDBaghdadDeaths', value);
+            } else if (key === 'MNF-W') {
+              commit('setMNDWestDeaths', value);
+            } else if (key === 'MND-N') {
+              commit('setMNDNDeaths', value);
+            } else if (key === 'MND-NE') {
+              commit('setMNDNEDeaths', value);
+            } else if (key === 'MND-C') {
+              commit('setMNDCDeaths', value);
+            } else if (key === 'MND-SE') {
+              commit('setMNDSEDeaths', value);
             }
-            console.log(key, value);
           });
           res.data.sort((a, b) => b[1] - a[1]);
           const regionResponse = true;
@@ -191,6 +199,22 @@ export default new Vuex.Store({
 
     setMNDWestDeaths(state, data) {
       state.MNDWestDeaths = data;
+    },
+
+    setMNDNDeaths(state, data) {
+      state.MNDNDeaths = data;
+    },
+
+    setMNDNEDeaths(state, data) {
+      state.MNDNEDeaths = data;
+    },
+
+    setMNDCDeaths(state, data) {
+      state.MNDCDeaths = data;
+    },
+
+    setMNDSEDeaths(state, data) {
+      state.MNDSEDeaths = data;
     },
 
   },
