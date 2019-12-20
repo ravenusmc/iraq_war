@@ -18,6 +18,12 @@
           <div class='MND-NE_div'>
             <h1 class='regionFix'>987</h1>
           </div>
+          <div class='MND-C_div'>
+            <h1 class='regionFix'>654</h1>
+          </div>
+          <div class='MND-SE_div'>
+            <h1 class='regionFix'>777</h1>
+          </div>
         </div>
       </div>
       <div class='formAndGraphArea'>
@@ -207,10 +213,37 @@ button:hover {
   align-items: center;
 }
 
+.MND-C_div {
+  position: relative;
+  top: 5%;
+  left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MND-SE_div {
+  position: relative;
+  top: 5%;
+  left: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .regionFix {
   padding: 10px;
   color: white;
   background: rgba(0, 0, 0, 0.6);
+}
+
+/* Media Query Area */
+@media only all and (max-width: 900px){
+
+  .formAndGraphArea {
+    grid-template-columns: 1fr;
+  }
+
 }
 
 </style>

@@ -67,4 +67,13 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+/* Media Query area */
+@media only all and (max-width: 900px){
+
+  .statArea {
+    grid-template-columns: 1fr;
+  }
+
+}
 </style>
