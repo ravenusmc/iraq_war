@@ -14,9 +14,17 @@ export default new Vuex.Store({
     IraqiForcesByyear: [],
     civilianDeathsByYear: [],
     enemyDeathsByYear: [],
-    deathsByRegion: {},
+    deathsByRegion: [['Region', 'Deaths'], ['MNF-W', 336], ['MND-N', 178],
+      ['MND-BAGHDAD', 161], ['MND-C', 117], ['MND-SE', 51], ['MND-S', 10],
+      ['MND-NE', 0]],
     regionResponse: false,
     gettingResponseRegion: false,
+    MNDBaghdadDeaths: 161,
+    MNDWestDeaths: 336,
+    MNDNDeaths: 178,
+    MNDNEDeaths: 0,
+    MNDCDeaths: 117,
+    MNDSEDeaths: 51,
   },
 
   getters: {
@@ -30,6 +38,12 @@ export default new Vuex.Store({
     deathsByRegion: state => state.deathsByRegion,
     regionResponse: state => state.regionResponse,
     gettingResponseRegion: state => state.gettingResponseRegion,
+    MNDBaghdadDeaths: state => state.MNDBaghdadDeaths,
+    MNDWestDeaths: state => state.MNDWestDeaths,
+    MNDNDeaths: state => state.MNDNDeaths,
+    MNDNEDeaths: state => state.MNDNEDeaths,
+    MNDCDeaths: state => state.MNDCDeaths,
+    MNDSEDeaths: state => state.MNDSEDeaths,
   },
 
   actions: {
@@ -112,6 +126,14 @@ export default new Vuex.Store({
       const path = 'http://localhost:5000/DeathsByRegion';
       axios.post(path, payload)
         .then((res) => {
+          console.log(res.data);
+          res.data.forEach(([key, value]) => {
+            if (key === 'MND-BAGHDAD') {
+              const MndBaghdadDeaths = value;
+              commit('setMNDBaghdadDeaths', MndBaghdadDeaths);
+            }
+            console.log(key, value);
+          });
           res.data.sort((a, b) => b[1] - a[1]);
           const regionResponse = true;
           commit('setDeathsByRegion', res.data);
@@ -161,6 +183,14 @@ export default new Vuex.Store({
 
     setRegionResponse(state, data) {
       state.regionResponse = data;
+    },
+
+    setMNDBaghdadDeaths(state, data) {
+      state.MNDBaghdadDeaths = data;
+    },
+
+    setMNDWestDeaths(state, data) {
+      state.MNDWestDeaths = data;
     },
 
   },

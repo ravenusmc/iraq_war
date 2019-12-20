@@ -7,22 +7,22 @@
       <div>
         <div id='mapArea'>
           <div class='Baghdad_div'>
-            <h1 class='regionFix'>123</h1>
+            <h1 class='regionFix'>{{ MNDBaghdadDeaths }}</h1>
           </div>
           <div class='West_div'>
-            <h1 class='regionFix'>456</h1>
+            <h1 class='regionFix'>{{ MNDWestDeaths }}</h1>
           </div>
           <div class='MND-N_div'>
-            <h1 class='regionFix'>789</h1>
+            <h1 class='regionFix'>{{ MNDNDeaths }}</h1>
           </div>
           <div class='MND-NE_div'>
-            <h1 class='regionFix'>987</h1>
+            <h1 class='regionFix'>{{ MNDNEDeaths }}</h1>
           </div>
           <div class='MND-C_div'>
-            <h1 class='regionFix'>654</h1>
+            <h1 class='regionFix'>{{ MNDCDeaths }}</h1>
           </div>
           <div class='MND-SE_div'>
-            <h1 class='regionFix'>777</h1>
+            <h1 class='regionFix'>{{ MNDSEDeaths }}</h1>
           </div>
         </div>
       </div>
@@ -89,6 +89,12 @@ export default {
       'deathsByRegion',
       'regionResponse',
       'gettingResponseRegion',
+      'MNDBaghdadDeaths',
+      'MNDWestDeaths',
+      'MNDNDeaths',
+      'MNDNEDeaths',
+      'MNDCDeaths',
+      'MNDSEDeaths',
     ]),
   },
   methods: {
