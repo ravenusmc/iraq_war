@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'StatArea',
@@ -47,14 +47,14 @@ export default {
       'enemyDeathsByYear',
     ]),
   },
-  methods: {
-    ...mapActions([
-      'buildDataArea',
-    ]),
-  },
-  mounted() {
-    this.buildDataArea();
-  },
+  // methods: {
+  //   ...mapActions([
+  //     'buildDataArea',
+  //   ]),
+  // },
+  // mounted() {
+  //   this.buildDataArea();
+  // },
 };
 </script>
 

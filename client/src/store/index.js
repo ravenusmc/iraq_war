@@ -10,10 +10,18 @@ export default new Vuex.Store({
     formData: {},
     deathData: {},
     coalitionDeathData: {},
-    CoalitionDeathsByYear: [],
-    IraqiForcesByyear: [],
-    civilianDeathsByYear: [],
-    enemyDeathsByYear: [],
+    CoalitionDeathsByYear: {
+      2005: 855, 2006: 818, 2007: 918, 2008: 281, 2009: 146,
+    },
+    IraqiForcesByyear: {
+      2005: 2254, 2006: 4348, 2007: 4660, 2008: 1942, 2009: 871,
+    },
+    civilianDeathsByYear: {
+      2005: 5732, 2006: 25029, 2007: 23060, 2008: 6343, 2009: 2666,
+    },
+    enemyDeathsByYear: {
+      2005: 3594, 2006: 4622, 2007: 6671, 2008: 2633, 2009: 310,
+    },
     deathsByRegion: [['Region', 'Deaths'], ['MNF-W', 336], ['MND-N', 178],
       ['MND-BAGHDAD', 161], ['MND-C', 117], ['MND-SE', 51], ['MND-S', 10],
       ['MND-NE', 0]],
@@ -49,9 +57,9 @@ export default new Vuex.Store({
   actions: {
 
     // This action will build the data area
-    buildDataArea: ({ dispatch }) => {
-      dispatch('fetchDeathsByYear');
-    },
+    // buildDataArea: ({ dispatch }) => {
+    //   dispatch('fetchDeathsByYear');
+    // },
 
     // This action will build the inital graph for the deaths by region area.
     buildInitialDeathsByRegionArea: ({ dispatch }, { payload }) => {
@@ -105,20 +113,16 @@ export default new Vuex.Store({
     },
 
     // This action will get the coalition death data by year.
-    fetchDeathsByYear: ({ commit }) => {
-      const path = 'http://localhost:5000/CoalitionDeathDataByYear';
-      axios.get(path)
-        .then((res) => {
-          const coalitionDeaths = res.data[0];
-          const iraqiForcesDeaths = res.data[1];
-          const civilianDeaths = res.data[2];
-          const enemyDeaths = res.data[3];
-          commit('setCoalitionDeathsByYear', coalitionDeaths);
-          commit('setIraqiForcesByyear', iraqiForcesDeaths);
-          commit('setCivilianDeathsByYear', civilianDeaths);
-          commit('setEnemyDeathsByYear', enemyDeaths);
-        });
-    },
+    // fetchDeathsByYear: ({ commit }) => {
+    //   const path = 'http://localhost:5000/CoalitionDeathDataByYear';
+    //   axios.get(path)
+    //     .then((res) => {
+    //       commit('setCoalitionDeathsByYear', res.data[0]);
+    //       commit('setIraqiForcesByyear', res.data[1]);
+    //       commit('setCivilianDeathsByYear', res.data[2]);
+    //       commit('setEnemyDeathsByYear', res.data[3]);
+    //     });
+    // },
 
     // This action will fetch deaths by region based on the year that the user
     // entered.
