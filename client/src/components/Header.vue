@@ -19,7 +19,7 @@ export default {
 header {
   background-image: url('../assets/img/flags.jpg');
   background-position: center;
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 600px;
   display: flex;
