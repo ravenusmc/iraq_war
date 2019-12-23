@@ -13,7 +13,6 @@
       <Location/>
       <Study/>
     </main>
-    <hr/>
     <Footer/>
   </div>
 </template>

@@ -117,12 +117,12 @@ export default {
       this.setRegionResponse(false);
     },
   },
-  mounted() {
-    const payload = {
-      year: this.year,
-    };
-    this.buildInitialDeathsByRegionArea({ payload });
-  },
+  // mounted() {
+  //   const payload = {
+  //     year: this.year,
+  //   };
+  //   this.buildInitialDeathsByRegionArea({ payload });
+  // },
 };
 </script>
 
@@ -153,19 +153,19 @@ select {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 10px;
   border-radius: 12px;
-  background-color: #3C3B6E;
-  border-color: #3C3B6E;
+  background-color: #027A3B;
+  border-color: #027A3B;
   color: #FFF;
   text-transform: uppercase;
 }
 
 button:hover {
-  background-color: #FFF;;
-  border-color: #3C3B6E;
-  color: #3C3B6E;
+  background-color: #FFF;
+  border-color: #027A3B;
+  color: #027A3B;
   text-transform: uppercase;
 }
 

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// import { GChart } from 'vue-google-charts';
 
 export default {
   name: 'GraphCard',

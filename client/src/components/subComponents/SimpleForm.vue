@@ -111,18 +111,16 @@ input {
 button {
   padding: 10px;
   border-radius: 12px;
-  background-color: #3C3B6E;
-  border-color: #3C3B6E;
+  background-color: #027A3B;
+  border-color: #027A3B;
   color: #FFF;
   text-transform: uppercase;
 }
 
 button:hover {
-  padding: 12px;
-  border-radius: 14px;
-  background-color: #3C3B6E;
-  border-color: #3C3B6E;
-  color: #FFF;
+  background-color: #FFF;
+  border-color: #FFF;
+  color: #027A3B;
   text-transform: uppercase;
 }
 

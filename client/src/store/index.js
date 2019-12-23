@@ -103,9 +103,9 @@ export default new Vuex.Store({
     // },
 
     // This action will build the inital graph for the deaths by region area.
-    buildInitialDeathsByRegionArea: ({ dispatch }, { payload }) => {
-      dispatch('fetchDeathsByRegion', { payload });
-    },
+    // buildInitialDeathsByRegionArea: ({ dispatch }, { payload }) => {
+    //   dispatch('fetchDeathsByRegion', { payload });
+    // },
 
     // This action will build the first graph.
     buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
