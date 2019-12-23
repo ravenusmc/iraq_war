@@ -125,4 +125,17 @@ button:hover {
   color: #FFF;
   text-transform: uppercase;
 }
+
+/* Media Query Area */
+@media only all and (max-width: 900px){
+
+  .datePicker {
+    flex-direction: column;
+  }
+
+  .deathSelector {
+    flex-direction: column;
+  }
+
+}
 </style>

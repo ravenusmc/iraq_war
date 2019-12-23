@@ -127,4 +127,13 @@ button:hover {
   color: #FFF;
   text-transform: uppercase;
 }
+
+/* Media Query Area */
+@media only all and (max-width: 900px){
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+}
 </style>
