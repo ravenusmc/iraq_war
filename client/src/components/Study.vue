@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import Form from '@/components/subComponents/Form.vue';
 import SimpleForm from '@/components/subComponents/SimpleForm.vue';
 import GraphCard from '@/components/charts/GraphCard.vue';
@@ -69,27 +69,27 @@ export default {
       'coalitionDeathData',
     ]),
   },
-  methods: {
-    ...mapActions([
-      'buildInitialGraphs',
-      'buildInitialGraphsTwo',
-    ]),
-  },
-  mounted() {
-    const payload = {
-      startDate: '1/1/2004 12:00:00 AM',
-      endDate: '1/1/2009 12:00:00 AM',
-      type: this.type,
-      deathSelector: this.checkedNames,
-    };
-    const payload2 = {
-      startDate: '1/1/2004 12:00:00 AM',
-      endDate: '1/1/2009 12:00:00 AM',
-      type: this.type,
-      deathSelector: this.checkedNamesTwo,
-    };
-    this.buildInitialGraphs({ payload });
-    this.buildInitialGraphsTwo({ payload2 });
-  },
+  // methods: {
+  //   ...mapActions([
+  //     'buildInitialGraphs',
+  //     'buildInitialGraphsTwo',
+  //   ]),
+  // },
+  // mounted() {
+  //   const payload = {
+  //     startDate: '1/1/2004 12:00:00 AM',
+  //     endDate: '1/1/2009 12:00:00 AM',
+  //     type: this.type,
+  //     deathSelector: this.checkedNames,
+  //   };
+  //   const payload2 = {
+  //     startDate: '1/1/2004 12:00:00 AM',
+  //     endDate: '1/1/2009 12:00:00 AM',
+  //     type: this.type,
+  //     deathSelector: this.checkedNamesTwo,
+  //   };
+  //   this.buildInitialGraphs({ payload });
+  //   this.buildInitialGraphsTwo({ payload2 });
+  // },
 };
 </script>

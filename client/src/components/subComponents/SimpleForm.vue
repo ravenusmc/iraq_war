@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getFormData',
+      'getSimpleFormData',
     ]),
     submitSelection(evt) {
       evt.preventDefault();
@@ -61,7 +61,7 @@ export default {
         endDate: this.endDate,
         deathSelector: this.checkedNames,
       };
-      this.getFormData({ payload });
+      this.getSimpleFormData({ payload });
     },
   },
 };

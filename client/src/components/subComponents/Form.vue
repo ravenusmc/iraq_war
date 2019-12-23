@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getFormData',
+      'fetchCoalitionDeathDataGraphTwo',
     ]),
     submitSelectionTwo(evt) {
       evt.preventDefault();
@@ -69,7 +69,7 @@ export default {
         type: this.type,
         deathSelector: this.checkedNames,
       };
-      this.getFormData({ payload });
+      this.fetchCoalitionDeathDataGraphTwo({ payload });
     },
   },
 };

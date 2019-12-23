@@ -33,6 +33,7 @@ def CoalitionDeathData():
     if request.method == 'POST':
         data = Data()
         post_data = request.get_json()
+        print(post_data)
         first_date = post_data['startDate']
         last_date = post_data['endDate']
         type = post_data['type']

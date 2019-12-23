@@ -108,22 +108,26 @@ export default new Vuex.Store({
     // },
 
     // This action will build the first graph.
-    buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
-      dispatch('fetchDeathData', { payload });
-      commit('setFormData', payload);
-    },
+    // buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
+    //   dispatch('fetchDeathData', { payload });
+    //   commit('setFormData', payload);
+    // },
 
     // This action will build the second graph when the application is mounted
-    buildInitialGraphsTwo: ({ dispatch }, { payload2 }) => {
-      dispatch('fetchCoalitionDeathDataMounted', { payload2 });
+    // buildInitialGraphsTwo: ({ dispatch }, { payload2 }) => {
+    //   dispatch('fetchCoalitionDeathDataMounted', { payload2 });
+    //   // commit('setFormData', payload);
+    // },
+
+    // This action will get the initial data and then build a graph based on that data
+    getSimpleFormData: ({ dispatch }, { payload }) => {
+      dispatch('fetchDeathData', { payload });
+      // dispatch('fetchCoalitionDeathData', { payload });
       // commit('setFormData', payload);
     },
 
-    // This action will get the initial data and then build a graph based on that data
-    getFormData: ({ commit, dispatch }, { payload }) => {
-      dispatch('fetchCoalitionDeathData', { payload });
-      commit('setFormData', payload);
-    },
+    // This action will get the data for the second graph area.
+    // fetchDeathData
 
     // This action will get the death data for everything
     fetchDeathData: ({ commit }, { payload }) => {
@@ -136,9 +140,9 @@ export default new Vuex.Store({
 
     // This action will get the death data that focus on coalition forces when the
     // application initially loads.
-    fetchCoalitionDeathDataMounted: ({ commit }, { payload2 }) => {
+    fetchCoalitionDeathDataGraphTwo: ({ commit }, { payload }) => {
       const path = 'http://localhost:5000/CoalitionDeathData';
-      axios.post(path, payload2)
+      axios.post(path, payload)
         .then((res) => {
           commit('setCoalitionDeathData', res.data);
         });
@@ -146,7 +150,8 @@ export default new Vuex.Store({
 
     // This action will get the death data that focus on coalition forces.
     fetchCoalitionDeathData: ({ commit }, { payload }) => {
-      const path = 'http://localhost:5000/CoalitionDeathData';
+      console.log(payload);
+      const path = 'http://localhost:5000/DeathData';
       axios.post(path, payload)
         .then((res) => {
           commit('setCoalitionDeathData', res.data);
