@@ -24,6 +24,8 @@
 
       <div>
         <button>Submit</button>
+        <h3 v-if='gettingSimpleFormResponse'>Getting Response...</h3>
+        <h3 v-if="simpleFormResponse">Response Received</h3>
       </div>
 
     </form>
@@ -32,7 +34,7 @@
 
 <script>
 import moment from 'moment';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'SimpleForm',
@@ -44,13 +46,18 @@ export default {
     };
   },
   computed: {
-    lastDay() {
-      return moment().subtract(1, 'days').format('M/D/YYYY');
-    },
+    ...mapGetters([
+      'simpleFormResponse',
+      'gettingSimpleFormResponse',
+    ]),
   },
   methods: {
     ...mapActions([
       'getSimpleFormData',
+    ]),
+    ...mapMutations([
+      'setGettingSimpleFormResponse',
+      'setSimpleFormResponse',
     ]),
     submitSelection(evt) {
       evt.preventDefault();
@@ -62,6 +69,8 @@ export default {
         deathSelector: this.checkedNames,
       };
       this.getSimpleFormData({ payload });
+      this.setGettingSimpleFormResponse(true);
+      this.setSimpleFormResponse(false);
     },
   },
 };

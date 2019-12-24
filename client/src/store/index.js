@@ -74,6 +74,8 @@ export default new Vuex.Store({
     MNDNEDeaths: 0,
     MNDCDeaths: 117,
     MNDSEDeaths: 51,
+    simpleFormResponse: false,
+    gettingSimpleFormResponse: false,
   },
 
   getters: {
@@ -93,6 +95,8 @@ export default new Vuex.Store({
     MNDNEDeaths: state => state.MNDNEDeaths,
     MNDCDeaths: state => state.MNDCDeaths,
     MNDSEDeaths: state => state.MNDSEDeaths,
+    simpleFormResponse: state => state.simpleFormResponse,
+    gettingSimpleFormResponse: state => state.gettingSimpleFormResponse,
   },
 
   actions: {
@@ -126,15 +130,14 @@ export default new Vuex.Store({
       // commit('setFormData', payload);
     },
 
-    // This action will get the data for the second graph area.
-    // fetchDeathData
-
     // This action will get the death data for everything
     fetchDeathData: ({ commit }, { payload }) => {
       const path = 'http://localhost:5000/DeathData';
       axios.post(path, payload)
         .then((res) => {
           commit('setDeathData', res.data);
+          commit('setSimpleFormResponse', true);
+          commit('setGettingSimpleFormResponse', false);
         });
     },
 
@@ -264,6 +267,14 @@ export default new Vuex.Store({
 
     setMNDSEDeaths(state, data) {
       state.MNDSEDeaths = data;
+    },
+
+    setGettingSimpleFormResponse(state, data) {
+      state.gettingSimpleFormResponse = data;
+    },
+
+    setSimpleFormResponse(state, data) {
+      state.simpleFormResponse = data;
     },
 
   },
