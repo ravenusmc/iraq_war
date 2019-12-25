@@ -76,6 +76,8 @@ export default new Vuex.Store({
     MNDSEDeaths: 51,
     simpleFormResponse: false,
     gettingSimpleFormResponse: false,
+    formResponse: false,
+    gettingFormResponse: false,
   },
 
   getters: {
@@ -97,6 +99,8 @@ export default new Vuex.Store({
     MNDSEDeaths: state => state.MNDSEDeaths,
     simpleFormResponse: state => state.simpleFormResponse,
     gettingSimpleFormResponse: state => state.gettingSimpleFormResponse,
+    formResponse: state => state.formResponse,
+    gettingFormResponse: state => state.gettingFormResponse,
   },
 
   actions: {
@@ -148,6 +152,8 @@ export default new Vuex.Store({
       axios.post(path, payload)
         .then((res) => {
           commit('setCoalitionDeathData', res.data);
+          commit('setFormResponse', true);
+          commit('setGettingFormResponse', false);
         });
     },
 
@@ -275,6 +281,14 @@ export default new Vuex.Store({
 
     setSimpleFormResponse(state, data) {
       state.simpleFormResponse = data;
+    },
+
+    setGettingFormResponse(state, data) {
+      state.gettingFormResponse = data;
+    },
+
+    setFormResponse(state, data) {
+      state.formResponse = data;
     },
 
   },

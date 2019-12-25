@@ -26,6 +26,8 @@
 
       <div class='button_area'>
         <button>Submit</button>
+        <h3 v-if='gettingFormResponse'>Getting Response...</h3>
+        <h3 v-if="formResponse">Response Received</h3>
       </div>
 
     </form>
@@ -34,7 +36,7 @@
 
 <script>
 import moment from 'moment';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'Form',
@@ -51,6 +53,10 @@ export default {
     };
   },
   computed: {
+    ...mapGetters([
+      'formResponse',
+      'gettingFormResponse',
+    ]),
     lastDay() {
       return moment().subtract(1, 'days').format('M/D/YYYY');
     },
@@ -58,6 +64,10 @@ export default {
   methods: {
     ...mapActions([
       'fetchCoalitionDeathDataGraphTwo',
+    ]),
+    ...mapMutations([
+      'setGettingFormResponse',
+      'setFormResponse',
     ]),
     submitSelectionTwo(evt) {
       evt.preventDefault();
@@ -70,6 +80,8 @@ export default {
         deathSelector: this.checkedNames,
       };
       this.fetchCoalitionDeathDataGraphTwo({ payload });
+      this.setGettingFormResponse(true);
+      this.setFormResponse(false);
     },
   },
 };
