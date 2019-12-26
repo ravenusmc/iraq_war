@@ -27,6 +27,10 @@ export default {
 }
 
 footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 300px;
   background-color: #A5B8C8;
   margin-left: 10%;
