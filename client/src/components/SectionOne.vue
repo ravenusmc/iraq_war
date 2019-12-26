@@ -19,9 +19,10 @@
         </p>
         <p align="left">
           Please note, that the data that this project uses is quite expansive
-          and thus it may take a few seconds, up to 10-15, to see the graphs
-          initially pop up. That's one reason why I have the basic stats section
-          below so that people can read about those stats as the graphs load.
+          and thus it may take a few seconds, up to 5-10 seconds, to see the graphs
+          once an option is made. When a response is received, if you miss the
+          graph being updated, you'll see the phrase 'response received' below
+          the button you pushed.
         </p>
       </div>
     </section>

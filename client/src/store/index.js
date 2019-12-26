@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -105,33 +104,9 @@ export default new Vuex.Store({
 
   actions: {
 
-    // This action will build the data area
-    // buildDataArea: ({ dispatch }) => {
-    //   dispatch('fetchDeathsByYear');
-    // },
-
-    // This action will build the inital graph for the deaths by region area.
-    // buildInitialDeathsByRegionArea: ({ dispatch }, { payload }) => {
-    //   dispatch('fetchDeathsByRegion', { payload });
-    // },
-
-    // This action will build the first graph.
-    // buildInitialGraphs: ({ commit, dispatch }, { payload }) => {
-    //   dispatch('fetchDeathData', { payload });
-    //   commit('setFormData', payload);
-    // },
-
-    // This action will build the second graph when the application is mounted
-    // buildInitialGraphsTwo: ({ dispatch }, { payload2 }) => {
-    //   dispatch('fetchCoalitionDeathDataMounted', { payload2 });
-    //   // commit('setFormData', payload);
-    // },
-
     // This action will get the initial data and then build a graph based on that data
     getSimpleFormData: ({ dispatch }, { payload }) => {
       dispatch('fetchDeathData', { payload });
-      // dispatch('fetchCoalitionDeathData', { payload });
-      // commit('setFormData', payload);
     },
 
     // This action will get the death data for everything
@@ -166,18 +141,6 @@ export default new Vuex.Store({
           commit('setCoalitionDeathData', res.data);
         });
     },
-
-    // This action will get the coalition death data by year.
-    // fetchDeathsByYear: ({ commit }) => {
-    //   const path = 'http://localhost:5000/CoalitionDeathDataByYear';
-    //   axios.get(path)
-    //     .then((res) => {
-    //       commit('setCoalitionDeathsByYear', res.data[0]);
-    //       commit('setIraqiForcesByyear', res.data[1]);
-    //       commit('setCivilianDeathsByYear', res.data[2]);
-    //       commit('setEnemyDeathsByYear', res.data[3]);
-    //     });
-    // },
 
     // This action will fetch deaths by region based on the year that the user
     // entered.
