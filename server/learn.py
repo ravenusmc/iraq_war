@@ -16,5 +16,5 @@ class Learn():
     def showUniqueElements(self):
         print(self.data['Attack on'].unique())
 
-learn = Learn()
-learn.showUniqueElements()
+# learn = Learn()
+# learn.showUniqueElements()

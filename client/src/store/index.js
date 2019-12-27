@@ -134,7 +134,6 @@ export default new Vuex.Store({
 
     // This action will get the death data that focus on coalition forces.
     fetchCoalitionDeathData: ({ commit }, { payload }) => {
-      console.log(payload);
       const path = 'http://localhost:5000/DeathData';
       axios.post(path, payload)
         .then((res) => {

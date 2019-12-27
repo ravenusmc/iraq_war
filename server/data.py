@@ -154,6 +154,3 @@ class Data():
             start_month = 1
             start_year += 1
         return death_Data
-
-# test = Data()
-# test.deaths_by_region(2005)
